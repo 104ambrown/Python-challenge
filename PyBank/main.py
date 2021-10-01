@@ -1,8 +1,16 @@
 # First we need to import the csv file of our data
+import os
+
+import csv
 
 # Next we need to establish the path
+csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
 # I think we need to define variables here? Maybe? Or maybe we creates lists to store the data, is there a difference?
+Date = [1]
+
+"Profit/Losses" = [2]
+
 
 # Count the things, and by things, I mean the number of months in the data set
     # find the first row of data
