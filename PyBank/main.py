@@ -8,13 +8,30 @@ csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
 # I think we need to define variables here? Maybe? Or maybe we creates lists to store the data, is there a difference?
 Date = [1]
-
 "Profit/Losses" = [2]
+
+# open the file
+with open(budget_data.csv) as csvfile:
+    csvreader - csv.reader(csvfile, delimiter=",")
+    for row it csvreader
+        # Add Date
+        Date.append(row[0])
+        # Add Profit/Losses
+        Profit_Losses.append(row[1])
+
+with open(budget_data, "w") as datafile:
+    writer = csv.writer(datafile)
+
+    writer.writerow(["Date", "Profits/Losses"])
 
 
 # Count the things, and by things, I mean the number of months in the data set
-    # find the first row of data
-    # find the last row of data
+   def months(months):
+       print(f"The number of months in the data set are...")
+       for value in months
+            print(value)
+        print("There are " + len(months))
+
 
 # Calculate the net gain or loss over the period
     # Find the first value in the gain or loss column
@@ -22,8 +39,7 @@ Date = [1]
     # calculate using those values the net gain or loss
 
 #Calculate the average of changes in "Profit/Losses" over the time period
-    # Now how the fuck do we do that arghhh
-    # Do some fancy-schmancy calculations I guess... computer do the thing!!!
+    
 
 # Greatest increase in profits,
     # Use a while loop to look for greatest value
