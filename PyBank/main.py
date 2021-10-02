@@ -38,11 +38,22 @@ with open(budget_data, "w") as datafile:
     # Find the first value in the gain or loss column
     # Find the last value in the gain or loss column 
     # calculate using those values the net gain or loss
-        # or I guess we could just use a simple sum command, screw you VBA you high maintenance asshole
+        # or I guess we could just use a simple sum command, screw you VBA you high maintenance jerk
+        sum(Profits/Losses)
+            length = len(Profits/Losses)
+            start = 1
+            print(sum(range(1)))
 
 
 #Calculate the average of changes in "Profit/Losses" over the time period
-    
+    def average(Profits/Losses"):
+        length = len(Profits/Losses)
+        total = 0.0
+        for number in Profits/Losses:
+            total += Profits/Losses
+        return total / length
+
+    print(average(range(1)))
 
 # Greatest increase in profits,
     # Use a while loop to look for greatest value
