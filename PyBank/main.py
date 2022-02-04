@@ -9,12 +9,12 @@ csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 # I think we need to define variables here? Maybe? Or maybe we creates lists to store the data, is there a difference?
 Date = {0}
 "Profit/Losses" = {1}
-#I think I just created 2 dictionaries and told them what col
+#I think I just created 2 dictionaries and told them what columns they are supposed to be
 
 # open the file, read it, write it, do something to it *le shrug*
 with open(budget_data.csv) as csvfile:
     csvreader - csv.reader(csvfile, delimiter=",")
-    for row in csvreader
+    for row in budget_data.csv
         # Add Date
         Date.append(row[0])
         # Add Profit/Losses
