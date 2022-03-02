@@ -1,101 +1,84 @@
-# First we need to import the csv file of our data
+# First we need to import dependencies
 from datetime import datetime
 import os
-
 import csv
 
 # Next we need to establish the path
-budget_data = os.path.join('..', 'Resources', 'budget_data.csv')
+csvpath = os.path.join("C:/Users/abrow/Desktop/EMERSON_BOOTCAMP/BOOTCAMP_AMB/Homeworks/Python-challenge/PyBank/Resources/budget_data.csv")
 
-# Creating lists to store data in
-Date = []
+# Creating lists to store data in and defining variables
+months = []
 profitLosses = []
 
-# defining csvreader
-csvreader = csv.reader(budget_data, delimiter=',')
-
-# open the file, read it, write it, do something to it *le shrug*
-with open(budget_data) as csvfile:
+# reading the csv file into VS Code
+with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
-        print(csvreader)
+    
     csv_header = next(csvreader)
-        print(f"CSV Header: {csv_header}")
+    # print(f"CSV Header: {csv_header}")
 
+    # reading each row of data into the script
     for row in csvreader:
-        # Add Date
-        Date.append(row[0])
-        # Add Profit/Losses
-        profitLosses.append(row[1])
+        months.append(row[0])
+        profitLosses.append(int(row[1]))
 
-# I think we need to define variables here? Maybe? Or maybe we creates lists to store the data, is there a difference?
-Date = {0}
-profitLosses = {1}
+    # counting how many months are in the dataset
+    numMonths = len(months)
 
-def bank_data(csvpath):
-    Date = datetime(csvreader[0])
-    profitLosses = int(csvreader[1])
+    # setting the variables 
+    x = 1
+    y = 0
 
+    # making a place holder to calculate change month-to-month
+    avgChange = (profitLosses[1]-profitLosses[0])
 
+    # list to hold the month-to-month change
+    monthlyChanges = []
 
+    # interating through dataset to calculate the monthly changes
+    for month in range(numMonths-1):
+        avgChange = (profitLosses[x]-profitLosses[y])
+        monthlyChanges.append(int(avgChange))
+        x = x + 1
+        y = y + 1
 
-with open(csvpath, "w") as datafile:
-    writer = csv.writer(datafile)
+    # Using the calculations generated above to find the average for the whole dataset
+    # rounding to 2 decimals for cents
+    avgMonthlyChange = round(sum(monthlyChanges)/(numMonths-1),2)
 
-    writer.writerow(["Date", "profitLosses"])
+    # finding the greatest profit and losses
+    greatestProfit = max(monthlyChanges)
+    greatestLoss = min(monthlyChanges)
 
+    # indexing by the changes to find the dates on which they occured
+    profitIndex = monthlyChanges.index(greatestProfit)
+    lossIndex = monthlyChanges.index(greatestLoss)
 
-# Count the things, and by things, I mean the number of months in the data set
-def months(Date):
-       print(f"There are " + len(Date) + " months in the data set.")
-       for value in months:
-            print(value)
-print("After ", + len(Date) + " long months at sea I finally made landfall on the southern shores of the dataset")
+    # Getting the months
+    greatestProfitMonth = months[profitIndex + 1]
+    greatestLossMonth = months[lossIndex + 1]
 
+ # Printing the values to the console
+print("PyBank Financial Analysis")
+print("------------------------------------------")
+print(f"Number of months in the dataset: {numMonths}")
+print(f"Total Profits/Losses for the period: ${sum(profitLosses)}")
+print(f"Average monthly change: ${avgMonthlyChange}")
+print(f"The greatest increase in profits was: ${greatestProfit} in {greatestProfitMonth}")
+print(f"The greatest loss in profits was: ${greatestLoss} in {greatestLossMonth}")
 
-# Calculate the net gain or loss over the period
-    # Find the first value in the gain or loss column
-    # Find the last value in the gain or loss column 
-    # calculate using those values the net gain or loss
-        # or I guess we could just use a simple sum command, screw you VBA you high maintenance jerk
-sum(profitLosses)
-length = len(profitLosses)
-start = 1
-print(sum(range(1)))
+# Writing the output to a text file
 
+output_path = os.path.join("C:/Users/abrow/Desktop/EMERSON_BOOTCAMP/BOOTCAMP_AMB/Homeworks/Python-challenge/PyBank/Analysis/pybank_financial_analysis.txt")
 
-#Calculate the average of changes in "Profit/Losses" over the time period
-def average(profitLosses):
-        length = len(profitLosses)
-        total = 0.0
-        for number in profitLosses:
-            total += profitLosses
-        return total / length
+with open(output_path, "w") as fin_analysis:
+    fin_analysis.write("PyBank Financial Analysis\n")
+    fin_analysis.write("------------------------------------------\n")
+    fin_analysis.write(f"Number of months in the dataset: {numMonths}\n")
+    fin_analysis.write(f"Total Profits/Losses for the period: ${sum(profitLosses)}\n")
+    fin_analysis.write(f"Average monthly change: {avgMonthlyChange}\n")
+    fin_analysis.write(f"The reatest increase in profits was: {greatestProfit} in {greatestProfitMonth}\n")
+    fin_analysis.write(f"The greatest loss in profits was: {greatestLoss} in {greatestLossMonth}\n")
 
-print(average(range(1)))
+    fin_analysis.close()
 
-# Greatest increase in profits,
-    # Use a while loop to look for greatest value
-    # Print greatest value
-    # Print date it occured
-    # Print amount
-maximum = max{profitLosses}
-    print(maximum)
-    print("I won big betting on ponies and made ", + maximum, + " dollars on ", + Date)
-
-# Greatest decrease in losses
-    # Use a while loop to look for lowest value
-    # Print lowest value
-    # Print date it occured
-    # Print amount
-minimum = min{"Profit/Losses"}
-print(minimum)
-print("I hit rock bottom betting on ponies and lost ", + minimum, + "dollars on ", + Date)
-
-# We need to print the analysis to terminal
-# Lastly we need to export our analysis as a text file 
-# Setting variable for output file
-output_file = os.path.join("PyBank_Analysis.txt")
-
-# Open the output file
-with open(output_file, "w", newline="") as textfile:
-    writer = textfile.writer(textfile)

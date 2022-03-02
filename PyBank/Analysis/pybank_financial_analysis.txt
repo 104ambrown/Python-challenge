@@ -1,0 +1,7 @@
+PyBank Financial Analysis
+------------------------------------------
+Number of months in the dataset: 86
+Total Profits/Losses for the period: $38382578
+Average monthly change: -2315.12
+The reatest increase in profits was: 1926159 in Feb-2012
+The greatest loss in profits was: -2196167 in Sep-2013
